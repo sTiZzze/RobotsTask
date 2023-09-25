@@ -37,8 +37,7 @@ class OrderForm(forms.Form):
             raise ValidationError('Неверный идентификатор клиента')
 
         # Проверка существования робота
-        robot = Robot.objects.filter(model=robot_model, version=robot_version)
-        if not robot:
+        if not Robot.objects.filter(model=robot_model, version=robot_version).exists():
             DeferredOrder.objects.create(customer_id=customer_id, model=robot_model, version=robot_version)
             raise ValidationError(
                 'Извините, выбранный вами робот временно недоступен. Мы уведомим вас, когда он появится в наличии.')
