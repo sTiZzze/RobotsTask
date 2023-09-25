@@ -1,7 +1,8 @@
+import xlsxwriter
+
+from datetime import datetime, timedelta
 from django.contrib import admin
 from django.http import HttpResponse
-import xlsxwriter
-from datetime import datetime, timedelta
 
 from robots.models import Robot
 
